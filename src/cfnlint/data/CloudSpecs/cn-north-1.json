@@ -10327,7 +10327,7 @@
         "CaseSensitive": {
           "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cognito-userpool-usernameconfiguration.html#cfn-cognito-userpool-usernameconfiguration-casesensitive",
           "PrimitiveType": "Boolean",
-          "Required": true,
+          "Required": false,
           "UpdateType": "Mutable"
         }
       }
@@ -14908,6 +14908,12 @@
           "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dynamodb-globaltable-replicaspecification.html#cfn-dynamodb-globaltable-replicaspecification-ssespecification",
           "Required": false,
           "Type": "ReplicaSSESpecification",
+          "UpdateType": "Mutable"
+        },
+        "TableClass": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dynamodb-globaltable-replicaspecification.html#cfn-dynamodb-globaltable-replicaspecification-tableclass",
+          "PrimitiveType": "String",
+          "Required": false,
           "UpdateType": "Mutable"
         },
         "Tags": {
@@ -32341,7 +32347,7 @@
         },
         "PropertyValue": {
           "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotevents-alarmmodel-iotsitewise.html#cfn-iotevents-alarmmodel-iotsitewise-propertyvalue",
-          "Required": true,
+          "Required": false,
           "Type": "AssetPropertyValue",
           "UpdateType": "Mutable"
         }
@@ -45852,7 +45858,7 @@
       }
     }
   },
-  "ResourceSpecificationVersion": "73.1.0",
+  "ResourceSpecificationVersion": "76.0.0",
   "ResourceTypes": {
     "AWS::AccessAnalyzer::Analyzer": {
       "Attributes": {
@@ -55314,6 +55320,11 @@
       }
     },
     "AWS::EC2::NatGateway": {
+      "Attributes": {
+        "NatGatewayId": {
+          "PrimitiveType": "String"
+        }
+      },
       "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-natgateway.html",
       "Properties": {
         "AllocationId": {
@@ -56973,16 +56984,21 @@
       }
     },
     "AWS::EC2::VPNGateway": {
-      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpn-gateway.html",
+      "Attributes": {
+        "VPNGatewayId": {
+          "PrimitiveType": "String"
+        }
+      },
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpngateway.html",
       "Properties": {
         "AmazonSideAsn": {
-          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpn-gateway.html#cfn-ec2-vpngateway-amazonsideasn",
-          "PrimitiveType": "Long",
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpngateway.html#cfn-ec2-vpngateway-amazonsideasn",
+          "PrimitiveType": "Integer",
           "Required": false,
           "UpdateType": "Immutable"
         },
         "Tags": {
-          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpn-gateway.html#cfn-ec2-vpngateway-tags",
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpngateway.html#cfn-ec2-vpngateway-tags",
           "DuplicatesAllowed": true,
           "ItemType": "Tag",
           "Required": false,
@@ -56990,7 +57006,7 @@
           "UpdateType": "Mutable"
         },
         "Type": {
-          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpn-gateway.html#cfn-ec2-vpngateway-type",
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpngateway.html#cfn-ec2-vpngateway-type",
           "PrimitiveType": "String",
           "Required": true,
           "UpdateType": "Immutable",
@@ -68017,7 +68033,10 @@
           "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-eventsubscription.html#cfn-rds-eventsubscription-sourcetype",
           "PrimitiveType": "String",
           "Required": false,
-          "UpdateType": "Conditional"
+          "UpdateType": "Conditional",
+          "Value": {
+            "ValueType": "AWS::RDS::EventSubscription.SourceType"
+          }
         }
       }
     },
@@ -78084,6 +78103,18 @@
     "AWS::RDS::DBInstance.PromotionTier": {
       "NumberMax": 15,
       "NumberMin": 0
+    },
+    "AWS::RDS::EventSubscription.SourceType": {
+      "AllowedValues": [
+        "custom-engine-version",
+        "db-cluster",
+        "db-cluster-snapshot",
+        "db-instance",
+        "db-proxy",
+        "db-parameter-group",
+        "db-security-group",
+        "db-snapshot"
+      ]
     },
     "AWS::Redshift::Cluster.NumberOfNodes": {
       "NumberMax": 100,
